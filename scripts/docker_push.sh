@@ -36,8 +36,9 @@ if [[ "$CONTAINERS" == "pytorch" || "$CONTAINERS" == "all" ]]; then
 	#push "l4t-pytorch:r$L4T_VERSION-pth1.5-py3"
 	#push $NGC_GROUP "l4t-pytorch:r$L4T_VERSION-pth1.6-py3"
 	#push $NGC_GROUP "l4t-pytorch:r$L4T_VERSION-pth1.7-py3"
-	push $NGC_GROUP "l4t-pytorch:r$L4T_VERSION-pth1.8-py3"
-	push $NGC_GROUP "l4t-pytorch:r$L4T_VERSION-pth1.9-py3"
+	#push $NGC_GROUP "l4t-pytorch:r$L4T_VERSION-pth1.8-py3"
+	#push $NGC_GROUP "l4t-pytorch:r$L4T_VERSION-pth1.9-py3"
+	push $NGC_GROUP "l4t-pytorch:r$L4T_VERSION-pth1.10-py3"
 fi
 
 if [[ "$CONTAINERS" == "tensorflow" || "$CONTAINERS" == "all" ]]; then
@@ -66,13 +67,13 @@ for ROS_DISTRO in ${ROS_CONTAINERS[@]}; do
 	ros_pytorch_image="ros:$ROS_DISTRO-pytorch-l4t-r$L4T_VERSION"
 	ros_slam_image="ros:$ROS_DISTRO-slam-l4t-r$L4T_VERSION"
 	
-	push $DOCKERHUB $ros_image
+	push $NGC_GROUP $ros_image
 	
 	if [[ "$(sudo docker images -q $ros_pytorch_image 2> /dev/null)" != "" ]]; then
-		push $DOCKERHUB $ros_pytorch_image
+		push $NGC_GROUP $ros_pytorch_image
 	fi
 	
 	if [[ "$(sudo docker images -q $ros_slam_image 2> /dev/null)" != "" ]]; then
-		push $DOCKERHUB $ros_slam_image
+		push $NGC_GROUP $ros_slam_image
 	fi
 done

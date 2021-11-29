@@ -25,4 +25,7 @@ if [ $L4T_RELEASE -eq 32 ]; then
 	fi
 fi
 	
+#BASE_IMAGE="nvcr.io/nvidian/nvidia-l4t-base:focal_CUDA_11.4.13_005"
+BASE_IMAGE="nvcr.io/nvidian/nvidia-l4t-base:focal_CUDA_11.4.13_008"
+
 echo "l4t-base image:  $BASE_IMAGE"
